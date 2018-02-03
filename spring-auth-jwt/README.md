@@ -6,7 +6,7 @@ La autenticación entre el API RESTful y sus consumidores es conveniente realizar
 
 El siguiente diagrama muestra el flujo general de un proceso de autenticación basada en token.
 
-![Image of Yaktocat](auth_jwt.png)  
+![Image of Yaktocat](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/auth_jwt.png)  
 
 1. El cliente envía sus credenciales (usuario y password) al servidor.
 1. Si las credenciales son válidas, el servidor devuelve al cliente un token de acceso.
@@ -23,10 +23,10 @@ El siguiente diagrama muestra el flujo general de un proceso de autenticación ba
 - Signature
 
 Cada una de estas partes se codifica en base64 de tal forma que el token generado tiene una apariencia como esta,
-
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-    .eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9
-    .TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+	
+	eyJhbGciOiJIUzUxMiJ9
+	.eyJzdWIiOiJqdWxpb3BhcmkiLCJleHAiOjE1MTc2OTgyMjl9
+	.Bj-hNJXavrrGZ1Z5HH9gxj7pH9ulYJqCnYkYq0brJIFGbrhyt7CMOa6oAM1p3F1Sp5JH3hiVfNaqC7Xju9aOMw
     
 #### Header
 El header consta de dos partes, el tipo de token y el algoritmo de hash.
@@ -71,7 +71,7 @@ public class UsuariosController {
 
     @GetMapping(path = "/users")
     public List<Usuario> getUsers(){
-        return Arrays.asList(new Usuario(1,"Paco"), new Usuario(2,"Pedro"), new Usuario(3, "Juan"));
+        return Arrays.asList(new Usuario(1,"Julio"), new Usuario(2,"Cesar"), new Usuario(3, "Juan"));
     }
 }
 ```
@@ -87,9 +87,14 @@ La contraseña la podremos ver en la consola
 ## Seguridad con JWT
 En este punto nuestro servicio **/users** está expuesto a todo mundo. Necesitamos agregar la capa de seguridad, para ello incluimos las siguientes dependencias a nuestro archivo build.gradle (o POM.xml en caso de maven)
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.3.RELEASE'
-    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
-
+```xml
+<dependency>
+	<groupId>io.jsonwebtoken</groupId>
+	<artifactId>jjwt</artifactId>
+	<version>0.6.0</version>
+</dependency>
+```
+		
 Ahora definiremos las reglas de seguridad mediante una clase a la que llamaremos ``SecurityConfig``
 
 ```java
@@ -115,8 +120,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // Creamos una cuenta de usuario por default
         auth.inMemoryAuthentication()
-                .withUser("ask")
-                .password("123")
+                .withUser("juliopari")
+                .password("123456")
                 .roles("ADMIN");
     }
 }
@@ -209,7 +214,7 @@ public class JwtUtil {
             .setExpiration(new Date(System.currentTimeMillis() + 60000))
             
             // Hash con el que firmaremos la clave
-            .signWith(SignatureAlgorithm.HS512, "P@tit0")
+            .signWith(SignatureAlgorithm.HS512, "limaperu")
             .compact();
 
         //agregamos al encabezado el token
@@ -225,7 +230,7 @@ public class JwtUtil {
         // si hay un token presente, entonces lo validamos
         if (token != null) {
             String user = Jwts.parser()
-                    .setSigningKey("P@tit0")
+                    .setSigningKey("limaperu")
                     .parseClaimsJws(token.replace("Bearer", "")) //este metodo es el que valida
                     .getBody()
                     .getSubject();
@@ -276,7 +281,7 @@ public class JwtFilter extends GenericFilterBean {
 
 El siguiente diagrama muestra de forma resumida lo que tenemos. Para una mejor comprensión ve el video demostrativo para ver el proyecto en funcionamiento.
 
-![Image of Yaktocat](jwt_spring.png)  
+![Image of Yaktocat](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/jwt_spring.png)  
 
 <iframe width="560" height="315" src="#" frameborder="0" allowfullscreen></iframe>
 
