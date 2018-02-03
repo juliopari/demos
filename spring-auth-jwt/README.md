@@ -1,4 +1,3 @@
-
 ## Introducción
 Una de las tendencias en el desarrollo web moderno es tener un API RESTful como back-end y como front-end una aplicación desarrollada en Angular 2, además que mediante un API RESTful podemos desarrollar también aplicaciones móviles que utilicen estos mismos servicios.
 
@@ -6,7 +5,7 @@ La autenticación entre el API RESTful y sus consumidores es conveniente realizar
 
 El siguiente diagrama muestra el flujo general de un proceso de autenticación basada en token.
 
-![Image of Yaktocat](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/auth_jwt.png)  
+![Image of juliopari](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/auth_jwt.png)  
 
 1. El cliente envía sus credenciales (usuario y password) al servidor.
 1. Si las credenciales son válidas, el servidor devuelve al cliente un token de acceso.
@@ -57,6 +56,20 @@ Además podemos indicar otros campos como el nombre, roles, etc.
   "exp": "1425390142"
 }
 ```
+
+## Creación del proyecto con NetBeans 8.2 y Maven
+
+(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb1.png)
+
+(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb2.png)
+
+(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb3.png)
+
+## Pruebas con Postman
+
+(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test1.png)
+
+(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test2.png)
 
 Al codificar el json anterior en base 64, obtenemos la segunda parte de nuestro JWT. Para más información recomiendo leer el [siguiente enlace](https://jwt.io/introduction/)
 
@@ -281,8 +294,6 @@ public class JwtFilter extends GenericFilterBean {
 
 El siguiente diagrama muestra de forma resumida lo que tenemos. Para una mejor comprensión ve el video demostrativo para ver el proyecto en funcionamiento.
 
-![Image of Yaktocat](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/jwt_spring.png)  
+![Image of juliopari](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/jwt_spring.png)  
 
 <iframe width="560" height="315" src="#" frameborder="0" allowfullscreen></iframe>
-
-**No olvides descargar el código fuente y dejar tus comentarios.**
