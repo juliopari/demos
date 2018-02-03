@@ -59,17 +59,17 @@ Además podemos indicar otros campos como el nombre, roles, etc.
 
 ## Creación del proyecto con NetBeans 8.2 y Maven
 
-(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb1.png)
+[Image](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb1.png)
 
-(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb2.png)
+[Image](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb2.png)
 
-(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb3.png)
+[Image](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/nb3.png)
 
 ## Pruebas con Postman
 
-(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test1.png)
+[Image](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test1.png)
 
-(https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test2.png)
+[Image](https://raw.githubusercontent.com/juliopari/demos/master/spring-auth-jwt/images/test2.png)
 
 Al codificar el json anterior en base 64, obtenemos la segunda parte de nuestro JWT. Para más información recomiendo leer el [siguiente enlace](https://jwt.io/introduction/)
 
